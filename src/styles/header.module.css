@@ -1,0 +1,123 @@
+/* styles/Home.module.css */
+.container {
+    position: relative; /* Needed for absolute positioning of children */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: rgb(229, 210, 210);
+    overflow: hidden; /* To clip off the circles going outside the container */
+  }
+
+  .loginLink {
+    position: absolute;
+    top: 20px;
+    right: 30px; /* Align to the top right corner */
+    text-decoration: underline;
+    cursor: pointer;
+    
+    color: #1E1E1E;
+    text-align: center;
+    text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5); /* Increased blur radius and opacity */
+    font-family: 'Jua', sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 2px;
+    z-index: 1;
+  }
+  
+  
+  /* styles.module.css */
+.circle {
+    position: absolute;
+    border-radius: 50%; /* Makes the divs circular */
+  }
+  
+  .circle1 {
+    background: radial-gradient(circle at center, rgba(91, 154, 234, 0.7) 0%, rgba(135, 181, 255, 0.5) 50%, rgba(255, 255, 255, 0) 70%);
+    top: 10%;
+    left: 15%;
+    width: 300px;
+    height: 300px;
+  }
+  
+  .circle2 {
+    background: radial-gradient(circle at center, rgba(130, 91, 234, 0.7), transparent 70%);
+    bottom: 15%;
+    right: 20%;
+    width: 250px;
+    height: 250px;
+  }
+  
+    .circle3 {
+        background: radial-gradient(circle at center, rgba(255, 87, 34, 0.7), transparent 70%);
+        top: 15%;
+        right: 10%;
+        width: 200px;
+        height: 200px;
+    }  
+
+  .circle4 {
+    background: radial-gradient(circle at center, rgba(182, 91, 234, 0.7), transparent 70%);
+    bottom: 10%;
+    right: 35%;
+    width: 360px;
+    height: 360px;
+  }
+
+  .circle5 {
+    background: radial-gradient(circle at center, rgba(204, 169, 44, 0.7) 0%, rgba(255, 235, 59, 0.5) 50%, transparent 70%);
+    top: 30%;
+    left: 20%;
+    width: 220px;
+    height: 220px;
+  }
+  
+  .circle6 {
+    background: radial-gradient(circle at center, rgba(76, 175, 80, 0.7) 0%, rgba(139, 195, 74, 0.5) 50%, transparent 70%);
+    bottom: 2%;
+    right: 30%;
+    width: 260px;
+    height: 260px;
+  }
+  
+  .circle7 {
+    background: radial-gradient(circle at center, rgba(255, 87, 34, 0.7) 0%, rgba(255, 138, 101, 0.5) 50%, transparent 70%);
+    top: 40%;
+    right: 5%;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .circle8 {
+    background: radial-gradient(circle at center, rgba(103, 58, 183, 0.7) 0%, rgba(180, 167, 214, 0.5) 50%, transparent 70%);
+    bottom: 20%;
+    left: 10%;
+    width: 300px;
+    height: 300px;
+  }
+  
+  
+
+  .title {
+    color: #1E1E1E;
+    text-align: center;
+    text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5); /* Increased blur radius and opacity */
+    font-family: 'Jua', sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 4px;
+    z-index: 1;
+  }
+  
+  /* Responsive styles for desktop */
+  @media (min-width: 1024px) {
+    .title {
+      font-size: 5rem; /* Larger text for desktop */
+    }
+    /* Adjust circle sizes and positions for a desktop view */
+    /* Additional desktop-specific styles */
+  }
+  
