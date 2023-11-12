@@ -17,7 +17,7 @@ const LoginForm: React.FC = () => {
   return (
     <div className={styles.login}>
       <Head>
-        <title>Animated login form - Bedimcode</title>
+        <title>Login!</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
       </Head>
@@ -52,7 +52,7 @@ const LoginForm: React.FC = () => {
           <button type="submit" className={styles.login__button}>Login</button>
 
           <p className={styles.register__prompt}>
-            Don't have an account? <a href="#">Register</a>
+            Don&apos;t have an account? <a href="#">Register</a>
           </p>
         </form>
       </div>
