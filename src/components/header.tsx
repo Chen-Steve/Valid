@@ -15,7 +15,7 @@ const Header: React.FC = () => {
                 rel="stylesheet"
                 />
             </Head>
-          <div className={styles.container}>
+            <div className={`${styles.container} custom-cursor`}>
             <div className={`${styles.circle} ${styles.circle1}`} />
             <div className={`${styles.circle} ${styles.circle2}`} />
             <div className={`${styles.circle} ${styles.circle3}`} />

@@ -15,7 +15,7 @@ const LoginForm: React.FC = () => {
     };
     
   return (
-    <div className={styles.login}>
+    <div className={styles.login + " custom-cursor"}>
       <Head>
         <title>Login!</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

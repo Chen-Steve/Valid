@@ -2,6 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
 /*=============== VARIABLES CSS ===============*/
 /*=============== LOGIN ===============*/
+.custom-cursor {
+  cursor: url('/cursor.png'), auto;
+}
+
 .login {
   position: relative;
   height: 100vh;

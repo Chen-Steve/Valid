@@ -9,6 +9,10 @@
     overflow: hidden; /* To clip off the circles going outside the container */
   }
 
+  .custom-cursor {
+    cursor: url('/cursor.png') 0 0, auto;
+  }
+
   .loginLink {
     position: absolute;
     top: 20px;
