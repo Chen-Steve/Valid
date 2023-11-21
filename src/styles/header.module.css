@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: rgb(229, 210, 210);
+    background: rgb(224, 197, 197);
     overflow: hidden; /* To clip off the circles going outside the container */
   }
 

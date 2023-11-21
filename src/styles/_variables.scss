@@ -3,6 +3,9 @@
 
 /*=============== VARIABLES CSS ===============*/
 :root{
+   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
    /*========== Colors ==========*/
    /*Color mode HSL(hue, saturation, lightness)*/
    --white-color: hsl(0, 0%, 100%);

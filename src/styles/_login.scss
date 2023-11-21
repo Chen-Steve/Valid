@@ -1,61 +1,92 @@
 /*=============== LOGIN ===============*/
-.login{
+.login {
    position: relative;
-   height: 100vh;
    display: grid;
    align-items: center;
+   height: 100vh;
 
-   &__img{
+   &__img {
       position: absolute;
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
    }
-   &__form{
-      position: relative;
+
+   &__form {
+      margin-inline: auto;
+      padding: 2.5rem 1.5rem;
       background-color: hsla(0, 0%, 10%, .1);
       border: 2px solid var(--white-color);
-      margin-inline: 1.5rem;
-      padding: 2.5rem 1.5rem;
       border-radius: 1rem;
       backdrop-filter: blur(8px);
-   }
-   &__title{
+      -webkit-backdrop-filter: blur(8px);
+    }
+    
+
+    &__title{
       text-align: center;
       font-size: var(--h1-font-size);
       font-weight: var(--font-medium);
       margin-bottom: 2rem;
    }
+
    &__content,
-   &__box{
+   &__box {
       display: grid;
    }
-   &__content{
+
+   &__content {
       row-gap: 1.75rem;
       margin-bottom: 1.5rem;
    }
-   &__box{
-      grid-template-columns: max-content 1fr ;
+
+   &__box {
+      grid-template-columns: max-content 1fr;
       align-items: center;
       column-gap: .75rem;
       border-bottom: 2px solid var(--white-color);
    }
+
    &__icon,
-   &__eye{
+   &__eye {
       font-size: 1.25rem;
    }
-   &__input{
+
+   &__input {
       width: 100%;
-      padding-block: .8rem;
-      background: none;
+      padding: 0.8rem;
+      background: rgba(255, 255, 255, 0.1); /* Light background for visibility */
       color: var(--white-color);
+      border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+      border-radius: 0.5rem; /* Rounded corners */
+      font-size: 1rem; /* Adjust font size for better readability */
+      outline: none; /* Remove default focus outline */
       position: relative;
       z-index: 1;
-   }
-   &__box-input{
+    
+      /* Transition for smooth effect on focus */
+      transition: border-color 0.3s, box-shadow 0.3s;
+    
+      /* Adding a subtle shadow for depth */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+      /* Style for when the input is focused */
+      &:focus {
+        border-color: var(--highlight-color); /* Highlight border color, define this variable */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+    
+      /* Placeholder style */
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+
+   &__box-input {
       position: relative;
    }
+
    &__label{
       position: absolute;
       left: 0;
@@ -63,45 +94,53 @@
       font-weight: var(--font-medium);
       transition: top .3s, font-size .3s;
    }
-   &__eye{
+   &__eye {
       position: absolute;
       right: 0;
       top: 18px;
       z-index: 10;
       cursor: pointer;
    }
-   &__box:nth-child(2) input{
+
+   &__box:nth-child(2) input {
       padding-right: 1.8rem;
    }
+
    &__check,
-   &__check-group{
+   &__check-group {
       display: flex;
       align-items: center;
       justify-content: space-between;
    }
-   &__check{
+
+   &__check {
       margin-bottom: 1.5rem;
    }
+
    &__check-label,
    &__forgot,
-   &__register{
+   &__register {
       font-size: var(--small-font-size);
    }
-   &__check-group{
+
+   &__check-group {
       column-gap: .5rem;
    }
-   &__check-input{
+
+   &__check-input {
       width: 16px;
       height: 16px;
    }
-   &__forgot{
+
+   &__forgot {
       color: var(--white-color);
 
-      &:hover{
+      &:hover {
          text-decoration: underline;
       }
    }
-   &__button{
+
+   &__button {
       width: 100%;
       padding: 1rem;
       border-radius: .5rem;
@@ -110,14 +149,15 @@
       cursor: pointer;
       margin-bottom: 2rem;
    }
-   &__register{
+
+   &__register {
       text-align: center;
 
-      & a{
+      & a {
          color: var(--white-color);
          font-weight: var(--font-medium);
 
-         &:hover{
+         &:hover {
             text-decoration: underline;
          }
       }

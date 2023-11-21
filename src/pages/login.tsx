@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import loginBg from '/public/login-bg.png'; 
+import loginBg from '/public/login-bg-2.png'; 
 import styles from '../styles/login.module.scss';
 import '../styles/styles.scss'; 
 
