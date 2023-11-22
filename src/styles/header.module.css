@@ -17,11 +17,12 @@
   }
 
   .title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: absolute;
     color: #1E1E1E;
+    text-align: center;
+
+    top: 34.6rem;
+    left: 540px;
 
     font-family: 'Jua', sans-serif;
     font-size: clamp(3rem, 10vw, 5rem);
