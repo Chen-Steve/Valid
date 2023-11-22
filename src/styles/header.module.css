@@ -13,6 +13,36 @@
   letter-spacing: 0.0625rem;
 }
 
+.demoLink {
+  top: 20px;
+  right: 120px;
+  position: absolute;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #1E1E1E;
+  text-align: center;
+  text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+  font-family: 'Jua', sans-serif;
+  font-size: 1.125rem; 
+  line-height: normal;
+  letter-spacing: 0.0625rem;
+}
+
+.comingSoon {
+  top: 20px;
+  right: 1275px;
+  position: absolute;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #1E1E1E;
+  text-align: center;
+  text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+  font-family: 'Jua', sans-serif;
+  font-size: 1.125rem; 
+  line-height: normal;
+  letter-spacing: 0.0625rem;
+}
+
 .title {
   position: relative;
   text-align: center;
@@ -49,6 +79,24 @@
     position: absolute;
     top: 20px;
     right: 30px;
+    font-size: 1.875rem; 
+    letter-spacing: 0.125rem; 
+    z-index: 1;
+  }
+
+  .demoLink {
+    position: absolute;
+    top: 20px;
+    right: 140px;
+    font-size: 1.875rem; 
+    letter-spacing: 0.125rem; 
+    z-index: 1;
+  }
+
+  .comingSoon {
+    position: absolute;
+    top: 20px;
+    right: 1275px;
     font-size: 1.875rem; 
     letter-spacing: 0.125rem; 
     z-index: 1;

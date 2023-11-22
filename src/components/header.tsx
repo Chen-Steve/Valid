@@ -22,6 +22,18 @@ const Header: React.FC = () => {
             <Link href="/login" aria-label="Login page link">Login</Link>
           </p>
         </nav>
+
+        <nav aria-label="Primary">
+          <p className={styles.demoLink}>
+            <Link href="/login" aria-label="Login page link">Demo</Link>
+          </p>
+        </nav>
+
+        <nav aria-label="Primary">
+          <p className={styles.comingSoon}>
+            <Link href="/login" aria-label="Login page link">Coming Soon...!</Link>
+          </p>
+        </nav>
   
         <h1 className={styles.title} tabIndex={0}>Welcome</h1>
       </>
