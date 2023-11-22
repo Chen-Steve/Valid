@@ -18,14 +18,17 @@
 
   .title {
     position: absolute;
+    text-align: center;
+    top: 36rem;
+    left: 25rem;
+    text-decoration: bold;
+    cursor: pointer;
+
     color: #1E1E1E;
     text-align: center;
 
-    top: 34.6rem;
-    left: 540px;
-
     font-family: 'Jua', sans-serif;
-    font-size: clamp(3rem, 10vw, 5rem);
+    font-size: 152px;
     font-weight: 400;
     line-height: normal;
     letter-spacing: 15px;
@@ -50,8 +53,9 @@
 /* Responsive styles for tablet and mobile */
 @media (max-width: 768px) {
   .title {
-    font-size: clamp(2rem, 15vw, 3rem); /* Adjust the values for mobile */
-    position: absolute;
+    font-size: 110px; /* Adjust the font size for smaller screens */
+    letter-spacing: 4px;
+    bottom: 10rem;
+    left: 2.5rem;
   }
 }
-  
