@@ -1,36 +1,49 @@
+/* Mobile-first default styles */
+.loginLink {
+  position: relative;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #1E1E1E;
+  text-align: center;
+  text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+  font-family: 'Jua', sans-serif;
+  font-size: 18px;
+  line-height: normal;
+  letter-spacing: 1px;
+}
+
+.title {
+  position: relative;
+  text-align: center;
+  text-decoration: bold;
+  cursor: pointer;
+  color: #1E1E1E;
+  font-family: 'Jua', sans-serif;
+  font-size: 24px;
+  line-height: normal;
+  letter-spacing: 5px;
+}
+
+.title:before {
+  visibility: hidden;
+}
+
+/* Styles for tablet to desktop */
+@media (min-width: 768px) {
   .loginLink {
     position: absolute;
     top: 20px;
-    right: 30px; /* Align to the top right corner */
-    text-decoration: underline;
-    cursor: pointer;
-    
-    color: #1E1E1E;
-    text-align: center;
-    text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5); /* Increased blur radius and opacity */
-    font-family: 'Jua', sans-serif;
+    right: 30px;
     font-size: 30px;
-    font-weight: 400;
-    line-height: normal;
     letter-spacing: 2px;
     z-index: 1;
   }
 
   .title {
     position: absolute;
-    text-align: center;
     top: 36rem;
     left: 25rem;
-    text-decoration: bold;
-    cursor: pointer;
-
-    color: #1E1E1E;
-    text-align: center;
-
-    font-family: 'Jua', sans-serif;
     font-size: 152px;
-    font-weight: 400;
-    line-height: normal;
     letter-spacing: 15px;
     z-index: 1;
   }
@@ -47,15 +60,7 @@
     mask-image:
     repeating-linear-gradient(transparent, transparent 3px, white 3px, white 4px),
     linear-gradient( transparent 50%, white 90%);
+    visibility: visible;
     z-index: 1;
-  }
-  
-/* Responsive styles for tablet and mobile */
-@media (max-width: 768px) {
-  .title {
-    font-size: 110px; /* Adjust the font size for smaller screens */
-    letter-spacing: 4px;
-    bottom: 10rem;
-    left: 2.5rem;
   }
 }

@@ -7,22 +7,25 @@ import styles from '../styles/header.module.css';
 import loginBg from '/public/home.png';
 
 const Header: React.FC = () => {
-  return (
-    <>
-      <Head>
-        <title>Valid.</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet" />
-      </Head>
-
-      <Image src={loginBg} alt="Background" layout='fill' objectFit='cover' quality={100} />
-      <p className={styles.loginLink}>
-        <Link href="/login">Login</Link>
-      </p>
-
-      <h1 className={styles.title}>Welcome</h1>
-    </>
-  );
-};
+    return (
+      <>
+        <Head>
+          <title>Valid.</title>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap" />
+        </Head>
+  
+        <Image src={loginBg} alt="Background image of homepage" layout='fill' objectFit='cover' quality={100} />
+        
+        <nav aria-label="Primary">
+          <p className={styles.loginLink}>
+            <Link href="/login" aria-label="Login page link">Login</Link>
+          </p>
+        </nav>
+  
+        <h1 className={styles.title} tabIndex={0}>Welcome</h1>
+      </>
+    );
+  };
 
 export default Header;
