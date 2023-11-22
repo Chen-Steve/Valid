@@ -1,31 +1,45 @@
-/* Mobile-first default styles */
 .loginLink {
-  position: relative;
+  top: 20px;
+  right: 30px;
+  position: absolute;
   text-decoration: underline;
   cursor: pointer;
   color: #1E1E1E;
   text-align: center;
   text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
   font-family: 'Jua', sans-serif;
-  font-size: 18px;
+  font-size: 1.125rem; 
   line-height: normal;
-  letter-spacing: 1px;
+  letter-spacing: 0.0625rem;
 }
 
 .title {
   position: relative;
   text-align: center;
-  text-decoration: bold;
+  font-weight: bold;
   cursor: pointer;
   color: #1E1E1E;
   font-family: 'Jua', sans-serif;
-  font-size: 24px;
+  font-size: 5rem;
   line-height: normal;
-  letter-spacing: 5px;
+  letter-spacing: 0.3125rem;
+  z-index: 1;
 }
 
 .title:before {
-  visibility: hidden;
+  content: "Welcome"; 
+  visibility: visible;
+  position: absolute;
+  margin-top: 52px;
+  transform: scale(1, -1);
+  backface-visibility: visible; 
+    -webkit-mask-image: 
+      repeating-linear-gradient(transparent, transparent 3px, white 3px, white 4px),
+      linear-gradient(transparent 50%, white 90%);
+    mask-image:
+      repeating-linear-gradient(transparent, transparent 3px, white 3px, white 4px),
+      linear-gradient(transparent 50%, white 90%);
+    z-index: 1;
 }
 
 /* Styles for tablet to desktop */
@@ -34,8 +48,8 @@
     position: absolute;
     top: 20px;
     right: 30px;
-    font-size: 30px;
-    letter-spacing: 2px;
+    font-size: 1.875rem; 
+    letter-spacing: 0.125rem; 
     z-index: 1;
   }
 
@@ -43,23 +57,22 @@
     position: absolute;
     top: 36rem;
     left: 25rem;
-    font-size: 152px;
-    letter-spacing: 15px;
+    font-size: 9.5rem; 
+    letter-spacing: 0.9375rem;
     z-index: 1;
   }
 
   .title:before {
     margin-top: 100px;
     position: absolute;
-    content: "Welcome";
     transform: scale(1, -1);
     backface-visibility: visible; 
     -webkit-mask-image: 
-    repeating-linear-gradient(transparent, transparent 3px, white 3px, white 4px),
-    linear-gradient( transparent 50%, white 90%);
+      repeating-linear-gradient(transparent, transparent 3px, white 3px, white 4px),
+      linear-gradient(transparent 50%, white 90%);
     mask-image:
-    repeating-linear-gradient(transparent, transparent 3px, white 3px, white 4px),
-    linear-gradient( transparent 50%, white 90%);
+      repeating-linear-gradient(transparent, transparent 3px, white 3px, white 4px),
+      linear-gradient(transparent 50%, white 90%);
     visibility: visible;
     z-index: 1;
   }
