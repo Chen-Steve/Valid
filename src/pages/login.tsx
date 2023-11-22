@@ -68,7 +68,7 @@ const LoginForm: React.FC = () => {
             <button type="submit" className="login__button">Login</button>
 
             <p className="login__register">
-               Don't have an account? <a href="#">Register</a>
+               Don&apos;t have an account? <a href="#">Register</a>
             </p>
          </form>
       </div>
