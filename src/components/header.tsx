@@ -25,13 +25,13 @@ const Header: React.FC = () => {
 
         <nav aria-label="Primary">
           <p className={styles.demoLink}>
-            <Link href="/login" aria-label="Login page link">Demo</Link>
+            <Link href="/moodGrid" aria-label="Login page link">Demo</Link>
           </p>
         </nav>
 
         <nav aria-label="Primary">
           <p className={styles.comingSoon}>
-            <Link href="/login" aria-label="Login page link">Coming Soon...!</Link>
+            <Link href="#" aria-label="Login page link">Coming Soon...!</Link>
           </p>
         </nav>
   
