@@ -53,6 +53,16 @@ const MoodGrid: NextPage = () => {
     localStorage.setItem('monthInPixels', JSON.stringify({ ...moods, [day]: nextMood }));
   };
 
+  const clearMoods = () => {
+    const clearedMoods = {};
+    daysArray.forEach(day => {
+      clearedMoods[day.toString()] = 'neutral';
+    });
+    setMoods(clearedMoods);
+    localStorage.setItem('monthInPixels', JSON.stringify(clearedMoods));
+  };
+  
+
   function throttle<T extends (...args: any[]) => any>(func: T, limit: number): (...args: Parameters<T>) => void {
     let lastFunc: NodeJS.Timeout;
     let lastRan: number;
@@ -102,6 +112,7 @@ const MoodGrid: NextPage = () => {
       />
       <main className={styles.container}>
         <h1 className={styles.title}>Month in Pixels</h1>
+        <button onClick={clearMoods}>Clear Colors</button> {/* Add this line */}
         <div className={styles.moodGrid}>
           {daysArray.map(day => {
             const style = {

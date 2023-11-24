@@ -3,7 +3,7 @@
   max-width: 80%; /* Adjusted for better responsiveness */
   margin-left: 10%; /* Centering the container */
   margin-top: 50px;
-  background: rgba(255, 255, 255, 0.8); /* Increased opacity for better readability */
+  background-color: hsla(0, 0%, 10%, 0.1);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 20px;
@@ -28,7 +28,7 @@
   font-family: 'Dancing Script', cursive;
   text-align: center;
   margin-bottom: 20px;
-  color: #090909;
+  color: #ffffff;
 }
 
 .moodGrid {
