@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/moodgrid.module.css';
+
+import Draggable from 'react-draggable';
 
 interface Moods {
   [key: string]: string;
@@ -23,46 +25,78 @@ const colors: { [mood: string]: string } = {
   grateful: "#ffdf65",
 };
 
+const MoodSquare: React.FC<{
+  day: number,
+  handleMoodClick: (day: number) => void,
+  moodColor: string,
+  daysInMonth: number
+}> = ({ day, handleMoodClick, moodColor, daysInMonth }) => {
+  const style = {
+    '--mood-color': moodColor || colors.neutral,
+  } as React.CSSProperties;
+
+  return (
+    <div
+      className={styles.moodSquare}
+      style={style}
+      onClick={() => handleMoodClick(day)}
+      onTouchEnd={() => handleMoodClick(day)}
+      role="button"
+      tabIndex={0}
+      aria-label={`Set mood for day ${day}`}
+    >
+      {day <= daysInMonth ? day : ''}
+    </div>
+  );
+};
+
 const MoodGrid: NextPage = () => {
   const [moods, setMoods] = useState<Moods>({});
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+
+  const getDaysInMonth = (month: number, year: number) => {
+    return new Date(year, month + 1, 0).getDate(); // month + 1 because JS months are 0-indexed
+  };
+
+  const months = Array.from({ length: 12 }, (_, index) => ({
+    name: new Date(currentYear, index).toLocaleString('default', { month: 'long' }),
+    days: getDaysInMonth(index, currentYear), // index is fine here because getDaysInMonth expects the actual month index (0-11)
+  }));
 
   const today = new Date();
   const daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
   const totalSquares = Math.max(daysInMonth, 30); // Adjust grid size based on the month
   const daysArray = Array.from({ length: totalSquares }, (_, index) => index + 1);
 
-  const handleMoodClick = (day: number) => {
+  const updateLocalStorage = useCallback((newMoods: Moods) => {
+    localStorage.setItem('monthInPixels', JSON.stringify(newMoods));
+  }, []);
+
+  const handleMoodClick = useCallback((monthIndex: number, day: number) => {
+    const moodKey = `${monthIndex}-${day}`;
     const moodsArray = Object.keys(colors);
-    const currentMood = moods[day] || 'neutral'; // Default to 'neutral' if no mood is set
+    const currentMood = moods[moodKey] || 'neutral';
     const currentMoodIndex = moodsArray.indexOf(currentMood);
     const nextMoodIndex = (currentMoodIndex + 1) % moodsArray.length;
     const nextMood = moodsArray[nextMoodIndex];
-  
-    setMoods({ ...moods, [day]: nextMood });
-    localStorage.setItem('monthInPixels', JSON.stringify({ ...moods, [day]: nextMood }));
-  };
 
-  const handleMoodInteraction = (day: number) => {
-    const moodsArray = Object.keys(colors);
-    const currentMood = moods[day] || 'neutral'; // Default to 'neutral' if no mood is set
-    const currentMoodIndex = moodsArray.indexOf(currentMood);
-    const nextMoodIndex = (currentMoodIndex + 1) % moodsArray.length;
-    const nextMood = moodsArray[nextMoodIndex];
-  
-    setMoods({ ...moods, [day]: nextMood });
-    localStorage.setItem('monthInPixels', JSON.stringify({ ...moods, [day]: nextMood }));
-  };
+    const updatedMoods = { ...moods, [moodKey]: nextMood };
+    setMoods(updatedMoods);
+    updateLocalStorage(updatedMoods);
+  }, [moods, updateLocalStorage]);
 
-  const clearMoods = () => {
-    const clearedMoods = {};
-    daysArray.forEach(day => {
-      clearedMoods[day.toString()] = 'neutral';
+  const clearMoods = useCallback(() => {
+    const clearedMoods: Moods = {};
+    months.forEach((month, monthIndex) => {
+      Array.from({ length: month.days }, (_, dayIndex) => {
+        const moodKey = `${monthIndex}-${dayIndex + 1}`;
+        clearedMoods[moodKey] = 'neutral';
+      });
     });
     setMoods(clearedMoods);
-    localStorage.setItem('monthInPixels', JSON.stringify(clearedMoods));
-  };
+    updateLocalStorage(clearedMoods);
+  }, [months, updateLocalStorage]);
   
-
   function throttle<T extends (...args: any[]) => any>(func: T, limit: number): (...args: Parameters<T>) => void {
     let lastFunc: NodeJS.Timeout;
     let lastRan: number;
@@ -84,11 +118,7 @@ const MoodGrid: NextPage = () => {
     };
   }
   
-
   const throttledHandleMoodClick = throttle(handleMoodClick, 300);
-
-  
-  
 
   useEffect(() => {
     const storedMoods = localStorage.getItem('monthInPixels');
@@ -98,45 +128,45 @@ const MoodGrid: NextPage = () => {
   }, []);
 
   return (
-    <>
-      <Head>
-        <title>Month in Pixels</title>
-      </Head>
-      <Image
-        src="/login-bg-2.png"
-        alt="Background"
-        width={1920}
-        height={1080}
-        className={styles.backgroundImage}
-        priority // Improves loading time for the background image
-      />
-      <main className={styles.container}>
-        <h1 className={styles.title}>Month in Pixels</h1>
-        <button onClick={clearMoods}>Clear Colors</button> {/* Add this line */}
-        <div className={styles.moodGrid}>
-          {daysArray.map(day => {
-            const style = {
-              '--mood-color': colors[moods[day]] || colors.neutral
-            } as React.CSSProperties;
-
-            return (
-              <div
-                key={day}
-                className={styles.moodSquare}
-                style={style}
-                onClick={() => throttledHandleMoodClick(day)}
-                onTouchEnd={() => throttledHandleMoodClick(day)} // Added touch handler
-                role="button"
-                tabIndex={0}
-                aria-label={`Set mood for day ${day}`} // Accessibility improvement
-              >
-                {day <= daysInMonth ? day : ''}
+    <Draggable>
+      <>
+        <Head>
+          <title>Year in Pixels</title>
+        </Head>
+        <Image
+          src="/login-bg-2.png"
+          alt="Background"
+          width={1920}
+          height={1080}
+          className={styles.backgroundImage}
+          priority
+        />
+        <main className={styles.container}>
+          <button className={styles.clearButton} onClick={clearMoods}>
+            Clear Colors
+          </button>
+          {months.map((month, monthIndex) => (
+            <div key={monthIndex} className={styles.monthContainer}>
+              <h2 className={styles.monthTitle}>{month.name}</h2>
+              <div className={styles.moodGrid}>
+                {Array.from({ length: month.days }, (_, dayIndex) => {
+                  const moodKey = `${monthIndex}-${dayIndex + 1}`;
+                  return (
+                    <MoodSquare
+                      key={dayIndex}
+                      day={dayIndex + 1}
+                      handleMoodClick={() => handleMoodClick(monthIndex, dayIndex + 1)}
+                      moodColor={colors[moods[moodKey]] || colors.neutral}
+                      daysInMonth={month.days}
+                    />
+                  );
+                })}
               </div>
-            );
-          })}
-        </div>
-      </main>
-    </>
+            </div>
+          ))}
+        </main>
+      </>
+    </Draggable>
   );
 };
 
