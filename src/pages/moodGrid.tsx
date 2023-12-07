@@ -117,6 +117,26 @@ const MoodGrid: NextPage = () => {
       }
     };
   }
+
+  const [background, setBackground] = useState<string>('/login-bg-2.png');
+  const backgrounds = [
+    { name: 'mythic', url: '/background/mythic.jpg' },
+    { name: 'mythic', url: '/background/mythic.jpg' },
+    { name: 'mythic', url: '/background/mythic.jpg' },
+    { name: 'mythic', url: '/background/mythic.jpg' },
+    { name: 'mythic', url: '/background/mythic.jpg' },
+    { name: 'mythic', url: '/background/mythic.jpg' },
+    { name: 'mythic', url: '/background/mythic.jpg' },
+    { name: 'mythic', url: '/background/mythic.jpg' },
+    { name: 'mythic', url: '/background/mythic.jpg' },
+    { name: 'mythic', url: '/background/mythic.jpg' },
+
+  ];
+
+  const handleBackgroundChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedBackground = event.target.value;
+    setBackground(selectedBackground);
+  };
   
   const throttledHandleMoodClick = throttle(handleMoodClick, 300);
 
@@ -134,7 +154,7 @@ const MoodGrid: NextPage = () => {
           <title>Year in Pixels</title>
         </Head>
         <Image
-          src="/login-bg-2.png"
+          src={background}
           alt="Background"
           width={1920}
           height={1080}
@@ -142,6 +162,17 @@ const MoodGrid: NextPage = () => {
           priority
         />
         <main className={styles.container}>
+        <select
+          className={styles.backgroundSelector}
+          value={background}
+          onChange={handleBackgroundChange}
+        >
+          {backgrounds.map((bg, index) => (
+            <option key={index} value={bg.url}>
+              {bg.name}
+            </option>
+          ))}
+        </select>
           <button className={styles.clearButton} onClick={clearMoods}>
             Clear Colors
           </button>
